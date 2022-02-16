@@ -9,7 +9,7 @@ class Address(models.Model):
 
     house = models.CharField(max_length=50)
 
-    flat = models.IntegerField(max_length=10)
+    flat = models.IntegerField(max_length=10, null=True, blank=True)
 
     zip_code = models.IntegerField(max_length=20)
 
