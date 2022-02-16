@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Address(models.Model):
     city = models.CharField(max_length=30)
 
-    street = models.CharField(max_length=50)
+    street = models.CharField(max_length=60)
 
     house = models.CharField(max_length=50)
 
