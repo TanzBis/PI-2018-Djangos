@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+from users.modules import CustomUser
 
 
 class Address(models.Model):
@@ -15,7 +16,7 @@ class Address(models.Model):
 
 
 class Contact(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     phone = models.CharField(max_length=30)
 

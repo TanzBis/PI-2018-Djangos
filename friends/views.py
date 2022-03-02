@@ -1,13 +1,10 @@
-from datetime import datetime
-
 from django.db.models import Q
-from rest_framework import viewsets
 from rest_framework.exceptions import APIException
 
-from api.serializers import DualSerializerViewSet
+from users.serializers import DualSerializerViewSet
 from friends.models import Friend
 
-from friends.serializers import FriendSerializer, FriendSerializerPopulated, FriendSerializerPopulatedContactPopulated
+from friends.serializers import FriendSerializer, FriendSerializerPopulatedContactPopulated
 
 
 class FriendViewSet(DualSerializerViewSet):
