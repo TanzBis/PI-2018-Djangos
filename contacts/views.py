@@ -1,4 +1,4 @@
-from users.serializers import DualSerializerViewSet
+from api.serializers import DualSerializerViewSet
 from contacts.models import Contact
 
 from contacts.serializers import ContactSerializer, ContactSerializerPopulated
