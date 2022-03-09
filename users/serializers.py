@@ -1,17 +1,20 @@
-from .models import CustomUser
 from rest_framework import serializers
+from users.models import CustomUser, Photos
+
+
+class PhotosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photos
+        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
-
     created_at = serializers.CharField(source='date_joined')
+    name = serializers.CharField(source='first_name')
+    photos = PhotosSerializer()
+
+    followed = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
-        fields = ['username','email', 'first_name', 'last_name', 'created_at']
-
-
-
-
-
-
-
+        fields = ['id','username', 'email', 'name', 'status', 'first_name', 'last_name', 'created_at', 'photos']

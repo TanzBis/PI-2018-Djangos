@@ -1,6 +1,6 @@
 from django.db import models
 
-from users.modules import CustomUser
+from users.models import CustomUser
 
 
 class Address(models.Model):

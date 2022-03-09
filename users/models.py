@@ -8,9 +8,7 @@ class Photos(models.Model):
 
 
 class CustomUser(AbstractUser):
-
     status = models.CharField(max_length=1024)
-
     photos = models.ForeignKey(Photos, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):

@@ -1,7 +1,7 @@
 from django.db.models import Q
 from rest_framework.exceptions import APIException
 
-from users.serializers import DualSerializerViewSet
+from api.serializers import DualSerializerViewSet
 from friends.models import Friend
 
 from friends.serializers import FriendSerializer, FriendSerializerPopulatedContactPopulated

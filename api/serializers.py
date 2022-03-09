@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import serializers, viewsets
 
 
 class DualSerializerViewSet(viewsets.ModelViewSet):
