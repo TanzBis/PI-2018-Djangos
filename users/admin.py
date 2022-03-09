@@ -7,6 +7,8 @@ from users.models import CustomUser, Photos
 class CustomUsersAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Photos)
-class PhotosUsersAdmin(admin.ModelAdmin):
+class PhotosAdmin(admin.ModelAdmin):
     pass
+

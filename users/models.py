@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
 
@@ -8,6 +8,7 @@ class Photos(models.Model):
 
 
 class CustomUser(AbstractUser):
+
     status = models.CharField(max_length=1024)
     photos = models.ForeignKey(Photos, on_delete=models.SET_NULL, null=True, blank=True)
 
