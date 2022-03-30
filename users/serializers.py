@@ -1,19 +1,24 @@
-from users.models import CustomUser, Photos
+from profiles.serializers import PhotosSerializer, StatusSerializer
+from users.models import CustomUser
 from rest_framework import serializers
 from follows.models import Follow
 
 
-class PhotosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Photos
-        fields = '__all__'
-
-
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='first_name')
-    photos = PhotosSerializer()
 
+    photos = serializers.SerializerMethodField()
+    status = serializers.SerializerMethodField()
     followed = serializers.SerializerMethodField()
+
+    def get_photos(self, user):
+        # profile = user.profile_set.first()
+        photos = user.profile.photos
+        return PhotosSerializer(photos).data
+
+    def get_status(self, user):
+        profile = user.profile
+        return StatusSerializer(profile).data
 
     def get_followed(self, user):
         me = self.context['request'].user
@@ -24,4 +29,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'name', 'email', 'status', 'photos', 'followed']
+        fields = ['id', 'name', 'photos', 'status', 'followed']

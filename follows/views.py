@@ -1,9 +1,3 @@
-from datetime import datetime
-
-from django.db.models import Q
-from rest_framework import viewsets
-from rest_framework.exceptions import APIException
-
 from api.serializers import DualSerializerViewSet
 from follows.models import Follow
 

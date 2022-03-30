@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Follow(models.Model):
+    objects = models.Manager()
+
     follower = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name='follower')
     followed = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name='followed')
 
@@ -9,4 +11,3 @@ class Follow(models.Model):
 
     class Meta:
         unique_together = ('follower', 'followed')
-
