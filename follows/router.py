@@ -1,6 +1,4 @@
-from rest_framework import routers
+from api.router import router
+from follows.viewsets.followers_viewset import FollowViewSet
 
-from follows.views import FollowViewSet
-
-router = routers.DefaultRouter()
 router.register(r'follows', FollowViewSet)

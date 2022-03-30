@@ -1,14 +1,10 @@
+from django.contrib.auth.admin import UserAdmin
+from users.models import CustomUser
 from django.contrib import admin
-
-from users.models import CustomUser, Photos
 
 
 @admin.register(CustomUser)
-class CustomUsersAdmin(admin.ModelAdmin):
+class UsersAdmin(UserAdmin):
     pass
 
-
-@admin.register(Photos)
-class PhotosAdmin(admin.ModelAdmin):
-    pass
 

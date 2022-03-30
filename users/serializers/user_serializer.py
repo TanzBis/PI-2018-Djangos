@@ -1,22 +1,21 @@
-from users.models import CustomUser, Photos
 from rest_framework import serializers
-from follows.models import Follow
+from rest_framework.permissions import IsAuthenticated
+
+from follows.models.follow import Follow
+from users.models import CustomUser
+from common.base_serializer import BaseSerializer
 
 
-class PhotosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Photos
-        fields = '__all__'
-
-
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(BaseSerializer):
     name = serializers.CharField(source='first_name')
-    photos = PhotosSerializer()
 
     followed = serializers.SerializerMethodField()
 
+    permission_classes = [IsAuthenticated]
+
     def get_followed(self, user):
         me = self.context['request'].user
+
         if me.is_anonymous:
             return False
 
@@ -24,4 +23,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'name', 'email', 'status', 'photos', 'followed']
+        fields = ['id', 'username', 'email', 'name', 'first_name', 'last_name', 'followed']
