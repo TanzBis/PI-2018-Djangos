@@ -1,8 +1,9 @@
 from django.contrib import admin
-from follows.models.follow import Follow
+
+from follows.models import Follow
 
 
 @admin.register(Follow)
-class FollowsAdmin(admin.ModelAdmin):
+class FollowAdmin(admin.ModelAdmin):
     pass
 
